@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息展示</title>
+</head>
+<body>
+    <table border="1px">
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>password</th>
+            <th>email</th>
+            <th>操作栏</th>
+        </tr>
+        <tr th:each="adminList:${adminList}">
+            <td th:text="${adminList.id}"></td>
+            <td th:text="${adminList.userName}"></td>
+            <td th:text="${adminList.userPswd}"></td>
+            <td th:text="${adminList.email}"></td>
+            <td>
+                <a th:href="@{sendAdminId(id=${adminList.id})}">更新</a>
+                <a th:href="@{delete(id=${adminList.id})}">删除</a>
+            </td>
+        </tr>
+        <a href="/addPage">添加</a>
+    </table>
+</body>
+</html>
