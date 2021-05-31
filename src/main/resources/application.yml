@@ -11,5 +11,3 @@ spring:
 mybatis:
   type-aliases-package: com.binziing.task.entity
   mapper-locations: classpath:mapper/*.xml
-logging:
-  level.com.binziing: trace
