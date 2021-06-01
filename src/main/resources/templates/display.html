@@ -15,8 +15,8 @@
         </tr>
         <tr th:each="adminList:${adminList}">
             <td th:text="${adminList.id}"></td>
-            <td th:text="${adminList.userName}"></td>
-            <td th:text="${adminList.userPswd}"></td>
+            <td th:text="${adminList.username}"></td>
+            <td th:text="${adminList.password}"></td>
             <td th:text="${adminList.email}"></td>
             <td>
                 <a th:href="@{sendAdminId(id=${adminList.id})}">更新</a>

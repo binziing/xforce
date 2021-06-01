@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>新增Admin页面</title>
+    <title>新增TAdmin页面</title>
 </head>
 <body>
     <form action="/add" method="post" th:object="${adminModel.admin}">
         id: <input type="text" name="id" th:value="*{id}">
-        用户名： <input type="text" name="userName" th:value="*{userName}">
-        密码： <input type="text" name="userPswd" th:value="*{userPswd}">
+        用户名： <input type="text" name="username" th:value="*{username}">
+        密码： <input type="text" name="password" th:value="*{password}">
         邮箱： <input type="text" name="email" th:value="*{email}">
         <input type="submit" value="添加">
     </form>
