@@ -1,6 +1,6 @@
 package com.binziing.task.controller;
 
-import com.binziing.task.entity.Admin;
+import com.binziing.task.jooq.tables.pojos.TAdmin;
 import com.binziing.task.service.AdminService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +20,12 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    private AdminService adminService;
+    private com.binziing.task.service.AdminService adminService;
 
     @RequestMapping("/display")
     public ModelAndView display(){
         ModelAndView modelAndView = new ModelAndView();
-        List<Admin> admins = adminService.queryAll();
+        List<TAdmin> admins = adminService.queryAll();
         modelAndView.addObject("adminList",admins);
         modelAndView.setViewName("display");
         return modelAndView;
@@ -40,27 +40,27 @@ public class AdminController {
 
     @GetMapping("/addPage")
     public ModelAndView addPage(Model model){
-        model.addAttribute("admin",new Admin());
+        model.addAttribute("admin",new TAdmin());
         return new ModelAndView("add","adminModel",model);
     }
 
     @PostMapping("/add")
-    public ModelAndView add(Admin admin){
-        adminService.add(admin);
+    public ModelAndView add(TAdmin tadmin){
+        adminService.add(tadmin);
         return new ModelAndView("redirect:/display");
     }
 
     @GetMapping("/sendAdminId")
     public ModelAndView sendAdminId(HttpServletRequest request,Model model){
         int updateId = Integer.parseInt(request.getParameter("id"));
-        Admin admin = adminService.selectByPrimaryKey(updateId);
-        model.addAttribute("admin",admin);
+        TAdmin tadmin = adminService.selectByPrimaryKey(updateId);
+        model.addAttribute("admin",tadmin);
         return new ModelAndView("update","adminModel",model);
     }
 
     @PostMapping("edit")
-    public ModelAndView edit(Admin admin){
-        adminService.update(admin);
+    public ModelAndView edit(TAdmin tadmin){
+        adminService.update(tadmin);
         return new ModelAndView("redirect:/display");
     }
 }
